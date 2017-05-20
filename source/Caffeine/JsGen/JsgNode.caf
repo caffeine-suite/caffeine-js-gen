@@ -1,0 +1,28 @@
+import &StandardImport
+
+class JsgNode extends &ArtClassSystem.BaseClass
+  @abstractClass()
+
+  @property :source :sourceIndex :props :children
+
+  @declarable
+    childrenMap: []
+    propFields: {}
+
+  constructor: (@_props, @_children) ->
+    super
+
+    if childrenMap = @getChildrenMap()
+      if childrenMap.length < @_children.length
+        throw new Error "More children(#{@_children.length}) than allowed: #{childrenMap.length}"
+
+      each propName, i from @getChildrenMap()
+        throw new Error "#{propName} specified in props and children" if @_props[propName]
+        @_props[propName] = @_children[i]
+
+  @getter
+    type: -> @class.getName()
+
+  generateJs: (jsStream) ->
+
+  generate: ({jsStream, sourceMapStream, inlineSourceMap}) ->

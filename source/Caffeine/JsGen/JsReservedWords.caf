@@ -1,0 +1,79 @@
+# NOTE: these are illegal to use as identifiers, but not property-names.
+
+# SOURCE: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords
+# Reserved keywords as of ECMAScript 2015
+
+:break
+:case
+:catch
+:class
+:const
+:continue
+:debugger
+:default
+:delete
+:do
+:else
+:export
+:extends
+:finally
+:for
+:function
+:if
+:import
+:in
+:instanceof
+:new
+:return
+:super
+:switch
+:this
+:throw
+:try
+:typeof
+:var
+:void
+:while
+:with
+:yield
+
+# Future reserved keywords
+# The following are reserved as future keywords by the ECMAScript specification. They have no special functionality at present, but they might at some future time, so they cannot be used as identifiers.
+# These are always reserved:
+
+:enum
+
+# The following are only reserved when they are found in strict mode code:
+
+:implements
+:interface
+:let
+:package
+:private
+:protected
+:public
+:static
+
+# The following are only reserved when they are found in module code:
+
+:await
+
+# Future reserved keywords in older standards
+# The following are reserved as future keywords by older ECMAScript specifications (ECMAScript 1 till 3).
+
+:abstract
+:boolean
+:byte
+:char
+:double
+:final
+:float
+:goto
+:int
+:long
+:native
+:short
+:synchronized
+:throws
+:transient
+:volatile

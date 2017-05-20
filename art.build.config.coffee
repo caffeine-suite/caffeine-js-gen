@@ -8,7 +8,9 @@ module.exports =
     node: true
 
   npm:
-    description: 'TODO'
+    description: 'Build a tree structure, output JavaScript and source-maps.'
+    dependencies:
+      'babel-generator': "^6.24.1"
 
   webpack:
     # common properties are merged into each target's properties

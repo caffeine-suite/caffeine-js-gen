@@ -1,0 +1,8 @@
+import &StandardImport
+
+suite: ->
+  test "123", ->
+    assert.eq
+      JsgNumber 123
+      .generate()
+      "123"

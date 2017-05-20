@@ -1,0 +1,14 @@
+class JsgNumber extends &JsgNode
+
+  @childrenMap :number
+
+  @propsValidator
+    number: required:
+      validator: (v) ->
+        isNumber v
+        ||
+          isString v
+          && jsNumberRegexp.test v
+
+  generateJs: (jsStream) ->
+    jsStream.write @number

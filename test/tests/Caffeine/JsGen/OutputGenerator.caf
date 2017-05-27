@@ -1,0 +1,71 @@
+import &StandardImport
+
+suite: ->
+  test "JsgOut", ->
+    out = JsgOut :a :b :c
+    assert.eq "abc", out.toString()
+
+  test "JsgOutLines", ->
+    out = JsgOutLines :a :b :c
+    assert.eq
+      out.toString()
+      """
+        a
+        b
+        c
+
+  test "JsgOutLines JsgOutLines" ->
+    out = JsgOutLines
+      "line 1"
+      JsgOutLines
+        "indented line 1"
+        "indented line 2"
+      "line 2"
+    assert.eq
+      out.toString()
+      """
+        line 1
+          indented line 1
+          indented line 2
+        line 2
+
+  test "some js stuff" ->
+    assert.eq
+      JsgOutLines
+        "" function doubleIt(x) {
+        JsgOutStatements
+          JsgOutSpaced :return :x :* :x
+        "" };
+      .toString()
+      """
+        function doubleIt(x) {
+          return x * x;
+        };
+
+  # test "JsgOutStatements nested", ->
+  #   out = JsgOutStatements
+  #     :a
+  #     JsgOutStatements :b :c
+  #     :d
+
+  #   assert.eq
+  #     out.toString()
+  #     """
+  #       \na;
+  #       b;
+  #       c;\n
+
+  # test "combined", ->
+  #   out = JsgOutStatements
+  #     "let a = 123"
+  #     JsgOutSpaced
+  #       :let
+  #       :b
+  #       :=
+  #       "" [
+  #       JsgOutList :1 :2 :3
+  #       "" ]
+  #   assert.eq
+  #     out.toString()
+  #     """
+  #       a

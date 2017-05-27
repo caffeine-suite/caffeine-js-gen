@@ -11,3 +11,7 @@ Build a tree structure, output JavaScript and source-maps. Built for [CaffeineSc
 * OUTPUT
 	* JavaScript text
 	* SourceMap text
+
+### Dependencies
+
+* SourceMap output: https://github.com/mozilla/source-map

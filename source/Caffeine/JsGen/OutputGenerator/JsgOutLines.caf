@@ -1,0 +1,19 @@
+import &StandardImport
+
+class JsgOutLines extends &JsgOutBase
+
+  # new-lines added at line-end only
+  appendTo: (appendToString, indent) ->
+    {terminator} = @props
+    indent = if indent?
+      indent + '  '
+    else
+      ''
+    numChildren = @children.length
+
+    each child, i from @children into out = []
+      appendToString += indent
+      appendToString = @appendChildTo child, appendToString, indent
+      appendToString += terminator if terminator?
+      appendToString += "\n" if i + 1 < numChildren
+    appendToString

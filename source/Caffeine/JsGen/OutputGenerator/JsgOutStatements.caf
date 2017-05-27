@@ -1,0 +1,7 @@
+import &StandardImport
+
+class JsgOutStatements extends &JsgOutLines
+
+  constructor: ->
+    super
+    @props.terminator = :;

@@ -3,4 +3,6 @@
 
 module.exports = require './namespace'
 module.exports
+.addModules
+  OutputGenerator: require './OutputGenerator'
 require './NodeTypes'

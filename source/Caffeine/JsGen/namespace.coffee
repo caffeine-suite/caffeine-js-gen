@@ -5,4 +5,5 @@ Caffeine = require '../namespace'
 module.exports = Caffeine.JsGen ||
 Caffeine.addNamespace 'JsGen', class JsGen extends Neptune.Base
   ;
-require './NodeTypes/namespace'
+require './NodeTypes/namespace';
+require './OutputGenerator/namespace'

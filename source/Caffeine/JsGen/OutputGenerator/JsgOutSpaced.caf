@@ -1,0 +1,6 @@
+import &StandardImport
+
+class JsgOutSpaced extends &JsgOutBase
+  constructor: ->
+    super
+    @props.delimiter = ' '

@@ -1,0 +1,41 @@
+import &StandardImport
+
+class JsgOutBase extends BaseClass
+  @abstractClass()
+
+  @postCreateConcreteClass: ->
+    super
+    log postCreateConcreteClass: @getName()
+    @toComponentFactory()
+
+  @toComponentFactory: ->
+    createObjectTreeFactory
+      inspectedName: "" #{@getName()}Factory
+      class: @
+      (props, children) -> new @ props, children
+
+  ##
+    IN:
+      @children: array
+        children should all implement:
+          .toStringsArray
+          OR .toString
+  constructor: (@props, @children) ->
+
+  appendChildTo: (child, appendToString, indent) ->
+    if isString child
+      appendToString += child
+    else
+      child.appendTo appendToString, indent
+
+  appendTo: (appendToString, indent) ->
+    {delimiter} = @props
+    numChildren = @children.length
+    each child, i from @children
+      appendToString = @appendChildTo child, appendToString, indent
+      appendToString += delimiter if delimiter? && i + 1 < numChildren
+    appendToString
+
+  toString: ->
+    @appendTo ''
+

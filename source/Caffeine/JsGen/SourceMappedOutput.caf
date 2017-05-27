@@ -1,0 +1,12 @@
+import &StandardImport
+
+class SourceMappedOutput extends BaseObject
+  ###
+    IN:
+      @text:          string, no new-lines
+      @sourceLine:    number, 0-based
+      @sourceColumn:  number, 0-based
+
+  constructor: (@text, @sourceLine, @sourceColumn) ->
+
+  output: -> @text

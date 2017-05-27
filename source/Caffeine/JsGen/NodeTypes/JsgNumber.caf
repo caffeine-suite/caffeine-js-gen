@@ -1,8 +1,10 @@
+import &ArtStandardLib
+
 class JsgNumber extends &JsgNode
 
   @childrenMap :number
 
-  @propsValidator
+  @propFields
     number: required:
       validator: (v) ->
         isNumber v

@@ -1,9 +1,19 @@
-import &StandardImport
+import &StandardImport, &ArtObjectTreeFactory, &ArtClassSystem
 
-class JsgNode extends &ArtClassSystem.BaseClass
+class JsgNode extends DeclarableMixin BaseClass
   @abstractClass()
 
   @property :source :sourceIndex :props :children
+
+  @postCreateConcreteClass: ->
+    super
+    @toComponentFactory()
+
+  @toComponentFactory: ->
+    createObjectTreeFactory
+      inspectedName: "" #{@getName()}Factory
+      class: @
+      (props, children) -> new @ props, children
 
   @declarable
     childrenMap: []
@@ -11,18 +21,23 @@ class JsgNode extends &ArtClassSystem.BaseClass
 
   constructor: (@_props, @_children) ->
     super
+    log 1
 
     if childrenMap = @getChildrenMap()
+      log 2
       if childrenMap.length < @_children.length
         throw new Error "More children(#{@_children.length}) than allowed: #{childrenMap.length}"
 
+      log 3
       each propName, i from @getChildrenMap()
         throw new Error "#{propName} specified in props and children" if @_props[propName]
         @_props[propName] = @_children[i]
+      log 4
 
   @getter
     type: -> @class.getName()
 
   generateJs: (jsStream) ->
 
-  generate: ({jsStream, sourceMapStream, inlineSourceMap}) ->
+  generate: (options = {}) ->
+    {jsStream, sourceMapStream, inlineSourceMap} = options

@@ -1,6 +1,6 @@
 import &StandardImport
 
-class JsgOutStatements extends &JsgOutLines
+class JsgOutStatements extends &JsgOutLines.class
 
   constructor: ->
     super

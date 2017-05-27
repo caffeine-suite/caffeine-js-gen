@@ -11,7 +11,7 @@ class JsgOutLines extends &JsgOutBase
       ''
     numChildren = @children.length
 
-    each child, i from @children into out = []
+    each child, i from @children
       appendToString += indent
       appendToString = @appendChildTo child, appendToString, indent
       appendToString += terminator if terminator?

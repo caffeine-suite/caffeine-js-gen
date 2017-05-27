@@ -29,7 +29,7 @@ suite: ->
           indented line 2
         line 2
 
-  test "some js stuff" ->
+  test "JsgOutStatements JsgOutSpaced" ->
     assert.eq
       JsgOutLines
         "" function doubleIt(x) {

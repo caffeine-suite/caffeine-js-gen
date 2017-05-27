@@ -10,7 +10,7 @@ module.exports =
   npm:
     description: 'Build a tree structure, output JavaScript and source-maps.'
     dependencies:
-      'babel-generator': "^6.24.1"
+      'art-object-tree-factory': '^1.0.0'
 
   webpack:
     # common properties are merged into each target's properties
